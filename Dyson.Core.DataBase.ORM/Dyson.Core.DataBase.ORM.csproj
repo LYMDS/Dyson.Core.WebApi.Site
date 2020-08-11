@@ -12,4 +12,13 @@
     <PackageReference Include="sqlSugarCore" Version="5.0.0.15" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dyson.Core.DataBase.Entity\Dyson.Core.DataBase.Entity.csproj" />
+    <ProjectReference Include="..\Dyson.Core.WebApi.Common\Dyson.Core.WebApi.Common.csproj" />
+  </ItemGroup>
+
 </Project>

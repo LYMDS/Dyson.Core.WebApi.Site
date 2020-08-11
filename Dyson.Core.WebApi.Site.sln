@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dyson.Core.WebApi.Common", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Api", "Test.Api\Test.Api.csproj", "{7A66F277-68D8-4F18-B877-55A29EFFFDC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyson.Core.DataBase.ORM", "Dyson.Core.DataBase.ORM\Dyson.Core.DataBase.ORM.csproj", "{EF9B862D-AAC5-443A-97C3-32D5E4C1583A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dyson.Core.DataBase.ORM", "Dyson.Core.DataBase.ORM\Dyson.Core.DataBase.ORM.csproj", "{EF9B862D-AAC5-443A-97C3-32D5E4C1583A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyson.Core.Test.Main", "Dyson.Core.Test.Main\Dyson.Core.Test.Main.csproj", "{D6F260B6-C758-4CE0-B5B8-9A654A2F611D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dyson.Core.Test.Main", "Dyson.Core.Test.Main\Dyson.Core.Test.Main.csproj", "{D6F260B6-C758-4CE0-B5B8-9A654A2F611D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyson.Core.DataBase.Entity", "Dyson.Core.DataBase.Entity\Dyson.Core.DataBase.Entity.csproj", "{2C1B63F1-7548-4AC3-BA86-601D6C471572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{D6F260B6-C758-4CE0-B5B8-9A654A2F611D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6F260B6-C758-4CE0-B5B8-9A654A2F611D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6F260B6-C758-4CE0-B5B8-9A654A2F611D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

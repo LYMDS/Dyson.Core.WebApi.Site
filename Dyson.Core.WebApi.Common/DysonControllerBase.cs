@@ -29,12 +29,11 @@ namespace Dyson.Core.WebApi.Common
         /// <summary>
         /// 构造函数
         /// </summary>
-        public DysonControllerBase(IConfiguration configuration, ILogger logger) : base()
+        public DysonControllerBase(ILogger logger) : base()
         {
-            this.Configuration = configuration;
             this.LogManager = logger;
         }
-        public IConfiguration Configuration { get; }
+        // 日志操作器
         public readonly ILogger LogManager;
     }
 }

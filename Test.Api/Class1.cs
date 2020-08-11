@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Dyson.Core.DataBase.ORM.Test;
-using Dyson.Core.DB.Entity;
+using Dyson.Core.DataBase.Entity;
 
 namespace Test.Api
 {
@@ -19,7 +19,7 @@ namespace Test.Api
     [Route("api/test")]
     public class Class1 : ControllerBase
     {
-        // public Class1(IConfiguration configuration, ILogger logger) : base(configuration, logger) { }
+        public Class1 
 
         [HttpGet, Route("get")]
         public List<AccountBase> getAccount() 
@@ -27,6 +27,12 @@ namespace Test.Api
             firstTestORM UnitTest = new firstTestORM();
             List<AccountBase> datalist = UnitTest.MyQuery();
             return datalist;
+        }
+
+        [HttpGet, Route("getSite")]
+        public new_srv_site get()
+        {
+            return Logic().GetSite();
         }
     }
 }

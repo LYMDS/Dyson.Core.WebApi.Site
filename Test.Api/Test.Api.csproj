@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Dyson.Core.DataBase.Entity\Dyson.Core.DataBase.Entity.csproj" />
     <ProjectReference Include="..\Dyson.Core.DataBase.ORM\Dyson.Core.DataBase.ORM.csproj" />
     <ProjectReference Include="..\Dyson.Core.WebApi.Common\Dyson.Core.WebApi.Common.csproj" />
   </ItemGroup>
