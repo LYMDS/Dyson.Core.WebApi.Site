@@ -1,0 +1,23 @@
+﻿{
+  "Version": "V1.0",
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:61718",
+      "sslPort": 44394
+    }
+  },
+  "profiles": {
+    "Dyson.Core.WebApi": {
+      "commandName": "Project",
+      // "launchBrowser": true,
+      "launchUrl": "",
+      "applicationUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
