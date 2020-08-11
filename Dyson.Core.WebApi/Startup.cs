@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Dyson.Core.WebApi.ToolHelpers;
+using Dyson.Core.DataBase.ORM;
+using Dyson.Core.DataBase.ORM.Test;
 
 namespace Dyson.Core.WebApi
 {
@@ -45,6 +47,8 @@ namespace Dyson.Core.WebApi
                     DependencyInjectionHelper.AddAssemblyFromDll(i);
                 }
             }
+            // ×¢ÈëÒ»¸öÂß¼­²ã
+            services.AddScoped<Logic>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
