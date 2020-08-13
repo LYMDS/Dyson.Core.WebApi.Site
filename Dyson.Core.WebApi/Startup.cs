@@ -49,6 +49,7 @@ namespace Dyson.Core.WebApi
             }
             // ×¢ÈëÒ»¸öÂß¼­²ã
             services.AddScoped<Logic>();
+            services.AddScoped(Type.GetType("Logic"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
