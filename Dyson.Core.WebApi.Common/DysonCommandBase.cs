@@ -23,7 +23,8 @@ namespace Dyson.Core.WebApi.Common
         // 日志操作器
         protected ILogger LogManager { set; get; }
         // 数据库操作器
-        public SqlSugarClient db { 
+        public SqlSugarClient db 
+        { 
             get 
             { 
                 return InitDB();

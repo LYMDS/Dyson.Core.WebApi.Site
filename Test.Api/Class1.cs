@@ -20,7 +20,7 @@ namespace Test.Api
     [Route("api/test")]
     public class Class1 : ControllerBase
     {
-        public Logic Logic { get; }
+        public Logic LogicService { get; }
         /// <summary>
         /// 构造函数
         /// 析出逻辑类
@@ -28,7 +28,7 @@ namespace Test.Api
         /// <param name="logic"></param>
         public Class1(Logic logic) 
         {
-            Logic = logic;
+            LogicService = logic;
         }
 
         [HttpGet, Route("get")]
@@ -42,7 +42,7 @@ namespace Test.Api
         [HttpGet, Route("getSite")]
         public new_srv_site get()
         {
-            return Logic.GetSite();
+            return LogicService.GetSite();
         }
     }
 }
