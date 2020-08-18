@@ -11,8 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Dyson.Core.WebApi.ToolHelpers;
-using Dyson.Core.DataBase.ORM;
-using Dyson.Core.DataBase.ORM.Test;
+// using Dyson.Core.DataBase.ORM;
+// using Dyson.Core.DataBase.ORM.Test;
 
 namespace Dyson.Core.WebApi
 {
@@ -40,7 +40,7 @@ namespace Dyson.Core.WebApi
             }
             // 注入逻辑层程序集
             List<string> logic_dependencys = this.Configuration.GetSection("DependencyInjections:LogicClass").Get<List<string>>();
-            if (controller_dependencys != null && controller_dependencys.Count > 0)
+            if (logic_dependencys != null && logic_dependencys.Count > 0)
             {
                 foreach (string i in logic_dependencys)
                 {
@@ -48,8 +48,8 @@ namespace Dyson.Core.WebApi
                 }
             }
             // 注入一个逻辑层
-            services.AddScoped<Logic>();
-            services.AddScoped(Type.GetType("Logic"));
+            // services.AddScoped<Logic>();
+            // services.AddScoped(Type.GetType("Logic"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
