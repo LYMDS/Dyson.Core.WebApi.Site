@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dyson.Core.Autofac.Test\Dyson.Core.Autofac.Test.csproj" />
     <ProjectReference Include="..\Dyson.Core.DataBase.ORM\Dyson.Core.DataBase.ORM.csproj" />
   </ItemGroup>
 

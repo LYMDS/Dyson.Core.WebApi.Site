@@ -17,7 +17,7 @@ namespace Dyson.Core.DataBase.ORM.Test
         public new_srv_site GetSite() 
         {
             List<new_srv_site> siteList = db.Queryable<new_srv_site>().Where(it => it.new_srv_siteId == new Guid("1F8ABF10-6E60-E511-80BC-00155D09C90D")).ToList();
-            this.LogManager.LogInformation("随便打印点东西");
+            // this.LogManager.LogInformation("打印");
             if (siteList.Count == 1)
             {
                 this.LogManager.LogInformation(siteList[0].new_name);
