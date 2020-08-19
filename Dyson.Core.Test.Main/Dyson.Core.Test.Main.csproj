@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <StartupObject>Dyson.Core.Test.Main.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

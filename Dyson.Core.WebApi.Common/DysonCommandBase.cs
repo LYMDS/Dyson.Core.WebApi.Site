@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Xml;
 using SqlSugar;
+using System.IO;
+using Dyson.Core.WebApi.Common.PasswordManager;
 
 namespace Dyson.Core.WebApi.Common
 {
@@ -17,9 +21,16 @@ namespace Dyson.Core.WebApi.Common
         /// </summary>
         public DysonCommandBase() 
         {
+            // 日志操作器初始化为空
             this.LogManager = null;
+            // 读取配置接口初始化
+            IConfigurationBuilder builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile("db.config.json");
+            this.Config = builder.Build();
         }
 
+        // 读取配置接口
+        protected IConfiguration Config { set; get; }
         // 日志操作器
         protected ILogger LogManager { set; get; }
         // 数据库操作器
@@ -33,11 +44,15 @@ namespace Dyson.Core.WebApi.Common
 
         private SqlSugarClient InitDB() 
         {
+            string connStr = Config.GetSection("connstr").Value;
+            string Key = Config.GetSection("privatekey").Value;
+            RSAHelper RSA_Helper = new RSAHelper();
+            connStr = RSA_Helper.Decrypt(connStr, Key);
             // 创建数据库连接
             var db = new SqlSugarClient(
                 new ConnectionConfig()
                 {
-                    ConnectionString = "server=.;uid=sa;pwd=collecting123;database=CSRZIC_MSCRM",
+                    ConnectionString = connStr,
                     DbType = DbType.SqlServer, // 设置数据库类型
                     IsAutoCloseConnection = true, // 自动释放数据务，如果存在事务，在事务结束后释放
                     InitKeyType = InitKeyType.Attribute // 从实体特性中读取主键自增列信息
