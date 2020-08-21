@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Autofac.Extensions.DependencyInjection;
+
 
 namespace Dyson.Core.WebApi
 {
@@ -24,6 +26,8 @@ namespace Dyson.Core.WebApi
                     logging.ClearProviders();
                     logging.AddConsole();
                 })
+                // Ìí¼Ó¹¤³§
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

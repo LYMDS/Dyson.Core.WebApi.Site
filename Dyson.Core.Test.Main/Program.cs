@@ -72,7 +72,7 @@ namespace Dyson.Core.Test.Main
             var builder = new ContainerBuilder();
             // builder.RegisterType<MyService>();
             // builder.RegisterType<MyService>().WithParameter(new TypedParameter(typeof(string), "注册时传参"));
-            var MyAssembly = Assembly.LoadFile(Directory.GetCurrentDirectory() + "\\Dyson.Core.Autofac.Test.dll");
+            var MyAssembly = Assembly.Load("Dyson.Core.Autofac.Test");
             Console.WriteLine(MyAssembly);
             // var MyAssembly = Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(MyAssembly).PublicOnly();
