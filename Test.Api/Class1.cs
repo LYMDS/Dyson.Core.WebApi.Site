@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Dyson.Core.DataBase.ORM;
 using Dyson.Core.DataBase.ORM.Test;
 using Dyson.Core.DataBase.Entity;
+using Dyson.Core.Autofac.Test;
 
 namespace Test.Api
 {
@@ -21,14 +22,16 @@ namespace Test.Api
     public class Class1 : ControllerBase
     {
         public Logic LogicService { get; }
+        public MyService MyService { get; }
         /// <summary>
         /// 构造函数
         /// 析出逻辑类
         /// </summary>
         /// <param name="logic"></param>
-        public Class1(Logic logic) 
+        public Class1(Logic logic, MyService myService) 
         {
             LogicService = logic;
+            MyService = myService;
         }
 
         [HttpGet, Route("get")]
@@ -43,6 +46,13 @@ namespace Test.Api
         public new_srv_site get()
         {
             return LogicService.GetSite();
+        }
+
+        [HttpGet, Route("Test1")]
+        public string Test1()
+        {
+            MyService.SetServiceString("测试AutoFac的服务析出");
+            return MyService.GetServiceString();
         }
     }
 }
