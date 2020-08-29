@@ -13,7 +13,7 @@ using Microsoft.Extensions.Logging;
 using Dyson.Core.WebApi.ToolHelpers;
 using Autofac;
 using System.Reflection;
-
+using Autofac.Extensions.DependencyInjection;
 
 namespace Dyson.Core.WebApi
 {
@@ -24,34 +24,27 @@ namespace Dyson.Core.WebApi
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; private set; }
+
+        public ILifetimeScope AutofacContainer { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // services.AddControllers().AddControllersAsServices();
-            IMvcBuilder mvcBuilder = services.AddControllers().AddControllersAsServices();
+            // IMvcBuilder mvcBuilder = services.AddControllers().AddControllersAsServices();
             // 注入控制器程序集
-            List<string> controller_dependencys = this.Configuration.GetSection("DependencyInjections:Controllers").Get<List<string>>();
-            if (controller_dependencys != null && controller_dependencys.Count > 0)
-            {
-                foreach (string i in controller_dependencys)
-                {
-                    DependencyInjectionHelper.AddAssemblyFromDllToMvcBuilder(mvcBuilder, i);
-                }
-            }
-            //// 注入逻辑层程序集
-            //List<string> logic_dependencys = this.Configuration.GetSection("DependencyInjections:LogicClass").Get<List<string>>();
-            //if (logic_dependencys != null && logic_dependencys.Count > 0)
+            //List<string> controller_dependencys = this.Configuration.GetSection("DependencyInjections:Controllers").Get<List<string>>();
+            //if (controller_dependencys != null && controller_dependencys.Count > 0)
             //{
-            //    foreach (string i in logic_dependencys)
+            //    foreach (string i in controller_dependencys)
             //    {
-            //        DependencyInjectionHelper.AddAssemblyFromDll(i);
+            //        DependencyInjectionHelper.AddAssemblyFromDllToMvcBuilder(mvcBuilder, i);
             //    }
             //}
-            // 注入一个逻辑层
-            // services.AddScoped<Logic>();
-            // services.AddScoped(Type.GetType("Logic"));
+            //services.AddMvc();
+            //services.AddOptions();
+            //services.AddMvc().AddControllersAsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +54,8 @@ namespace Dyson.Core.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+            // app.UseMvc();
             // 注册中间件
             //app.Use(async (context, next) =>
             //{
@@ -69,16 +64,16 @@ namespace Dyson.Core.WebApi
             //    // Do logging or other work that doesn't write to the Response.
             //});
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
 
         /// <summary>
