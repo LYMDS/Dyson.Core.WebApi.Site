@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Autofac;
 
 namespace Dyson.Core.WebApi.Controllers
 {
@@ -26,9 +27,10 @@ namespace Dyson.Core.WebApi.Controllers
         [Route("GetVersion")]
         public string GetVersion() 
         {
+            string version = this.Configuration.GetValue<string>("Version");
             LogManager.LogInformation(this.Request.Host.Host + this.Request.Host.Port.ToString());
-            LogManager.LogInformation("查看版本");
-            return "Dyson.Core.WebApi.Site " + this.Configuration.GetValue<string>("Version");
+            LogManager.LogInformation("查看版本" + version);
+            return "Dyson.Core.WebApi.Site " + version;
         }
     }
 }

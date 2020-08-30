@@ -25,7 +25,7 @@ namespace Dyson.Core.WebApi.Common
             this.LogManager = null;
             // 读取配置接口初始化
             IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory()).AddXmlFile("db.config.json");
+                .SetBasePath(AppContext.BaseDirectory).AddXmlFile("db.config.json");
             this.Config = builder.Build();
         }
 

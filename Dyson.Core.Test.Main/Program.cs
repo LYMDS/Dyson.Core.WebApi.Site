@@ -4,7 +4,7 @@ using Dyson.Core.DataBase.ORM.Test;
 using Dyson.Core.DataBase.Entity;
 using Dyson.Core.WebApi.Common.PasswordManager;
 using Autofac;
-using Dyson.Core.Autofac.Test;
+using Dyson.Core.Autofac.Test; 
 using System.Reflection;
 using System.IO;
 using Autofac.Core;
@@ -87,7 +87,7 @@ namespace Dyson.Core.Test.Main
             using (var scope = Container.BeginLifetimeScope())
             {
                 // var myService = scope.Resolve<MyService>();
-                MyService myService = scope.Resolve<MyService>();
+                IMyService myService = scope.Resolve<IMyService>();
                 myService.SetServiceString("这是我的第一个服务");
                 Console.WriteLine(myService.GetServiceString());
             }
