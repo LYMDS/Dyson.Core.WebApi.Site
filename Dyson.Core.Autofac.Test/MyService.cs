@@ -28,14 +28,5 @@ namespace Dyson.Core.Autofac.Test
             this.ServiceString = value;
         }
     }
-
-    public interface IMyService
-    {
-        public string ServiceString { set; get; }
-
-        public string GetServiceString();
-
-        public void SetServiceString(string value);
-    }
 }
 

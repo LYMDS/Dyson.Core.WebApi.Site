@@ -4,7 +4,8 @@ using System.Reflection;
 using System.Runtime.Loader;
 using Microsoft.Extensions.DependencyInjection;
 using System.IO;
-
+using Autofac;
+using System.Collections.Generic;
 
 namespace Dyson.Core.WebApi.ToolHelpers
 {
@@ -16,17 +17,15 @@ namespace Dyson.Core.WebApi.ToolHelpers
         /// <summary>
         /// 空构造器
         /// </summary>
-        public DependencyInjectionHelper() 
+        public DependencyInjectionHelper(ContainerBuilder _builder) 
         {
-        
+            builder = _builder;
         }
 
-        /// <summary>
-        /// 注入程序集到Mvc控制器
-        /// </summary>
-        /// <param name="mvcBuilder">Mvc构建者</param>
-        /// <param name="dllName">dll名称</param>
-        public static void AddAssemblyFromDllToMvcBuilder(IMvcBuilder mvcBuilder, string dllName)
+        public ContainerBuilder builder;
+
+        
+        public void AddAssemblyFromDllToMvcBuilder(IMvcBuilder mvcBuilder, string dllName)
         {
             Assembly otherWebAPIAssembly = null;
             var assemblies = AssemblyLoadContext.Default.Assemblies;
@@ -47,13 +46,43 @@ namespace Dyson.Core.WebApi.ToolHelpers
         /// 注入逻辑程序
         /// </summary>
         /// <param name="dllName">dll名称</param>
-        public static void AddAssemblyFromDll(string dllName) 
+        public void AddAssemblyFromDll(string dllName) 
         {
             var assemblies = AssemblyLoadContext.Default.Assemblies;
             if (!assemblies.Any(o => o.FullName.Contains(Path.GetFileNameWithoutExtension(dllName))))
             {
                 var dllFile = AppContext.BaseDirectory + dllName;
                 Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(dllFile);
+            }
+        }
+
+        /// <summary>
+        /// 自动注入程序集IOC容器
+        /// </summary>
+        /// <param name="dllName">程序集名称</param>
+        public void AddAssemblyFromDllToAutoFac(string dllName) 
+        {
+            var assemblies = AssemblyLoadContext.Default.Assemblies;
+            if (!assemblies.Any(o => o.FullName.Contains(Path.GetFileNameWithoutExtension(dllName))))
+            {
+                var dllFile = AppContext.BaseDirectory + dllName;
+                Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(dllFile);
+                var res = builder.RegisterAssemblyTypes(assembly).PublicOnly().AsImplementedInterfaces();
+            }
+        }
+
+        /// <summary>
+        /// 通过配置文件加载IOC容器
+        /// </summary>
+        /// <param name="AssemblyList">程序集名称列表</param>
+        public void AddAssemblysFromConfig(List<string> AssemblyList) 
+        {
+            if (AssemblyList != null && AssemblyList.Count > 0) 
+            {
+                foreach (string i in AssemblyList) 
+                {
+                    this.AddAssemblyFromDllToAutoFac(i);
+                }
             }
         }
     }

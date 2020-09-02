@@ -87,7 +87,7 @@ namespace Dyson.Core.Test.Main
             using (var scope = Container.BeginLifetimeScope())
             {
                 // var myService = scope.Resolve<MyService>();
-                IMyService myService = scope.Resolve<IMyService>();
+                MyService myService = scope.Resolve<MyService>();
                 myService.SetServiceString("这是我的第一个服务");
                 Console.WriteLine(myService.GetServiceString());
             }
