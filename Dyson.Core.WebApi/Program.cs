@@ -21,11 +21,11 @@ namespace Dyson.Core.WebApi
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 // 配置日志
-                //.ConfigureLogging(logging =>
-                //{
-                //    logging.ClearProviders();
-                //    logging.AddConsole();
-                //})
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                })
                 // 添加工厂
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
