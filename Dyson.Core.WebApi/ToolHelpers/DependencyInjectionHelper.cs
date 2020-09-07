@@ -15,7 +15,7 @@ namespace Dyson.Core.WebApi.ToolHelpers
     public class DependencyInjectionHelper
     {
         /// <summary>
-        /// 空构造器
+        /// 构造函数
         /// </summary>
         public DependencyInjectionHelper(ContainerBuilder _builder) 
         {

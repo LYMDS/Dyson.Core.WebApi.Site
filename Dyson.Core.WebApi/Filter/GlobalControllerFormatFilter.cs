@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Dyson.Core.WebApi.Models;
 
 namespace Dyson.Core.WebApi.Filter
 {
@@ -18,12 +20,14 @@ namespace Dyson.Core.WebApi.Filter
 
         public void OnResultExecuted(ResultExecutedContext context)
         {
-
-            Logger.LogInformation("我是全局过滤器GlobalControllerFormatFilter after");
+            
         }
 
         public void OnResultExecuting(ResultExecutingContext context)
         {
+            
+            var objectResult = context.Result as ObjectResult;
+            context.Result = new OkObjectResult(new BaseResultModel(code: 200, data: objectResult.Value));
             Logger.LogInformation("我是全局过滤器GlobalControllerFormatFilter before");
         }
     }
