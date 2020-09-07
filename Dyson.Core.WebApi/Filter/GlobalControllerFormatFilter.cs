@@ -9,6 +9,9 @@ using Dyson.Core.WebApi.Models;
 
 namespace Dyson.Core.WebApi.Filter
 {
+    /// <summary>
+    /// WebApi响应格式化过滤器
+    /// </summary>
     public class GlobalControllerFormatFilter : Attribute, IResultFilter
     {
         protected ILogger<GlobalControllerFormatFilter> Logger;
@@ -18,17 +21,13 @@ namespace Dyson.Core.WebApi.Filter
             Logger = logger;
         }
 
-        public void OnResultExecuted(ResultExecutedContext context)
-        {
-            
-        }
+        public void OnResultExecuted(ResultExecutedContext context) { }
 
         public void OnResultExecuting(ResultExecutingContext context)
         {
-            
             var objectResult = context.Result as ObjectResult;
+            Logger.LogWarning(objectResult.StatusCode.ToString());
             context.Result = new OkObjectResult(new BaseResultModel(code: 200, data: objectResult.Value));
-            Logger.LogInformation("我是全局过滤器GlobalControllerFormatFilter before");
         }
     }
 }

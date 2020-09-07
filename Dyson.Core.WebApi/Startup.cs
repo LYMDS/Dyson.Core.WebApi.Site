@@ -32,9 +32,13 @@ namespace Dyson.Core.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(option => {
-                option.Filters.Add<GlobalControllerFormatFilter>();
-            }).AddControllersAsServices();
+            services.AddControllers(
+                option => 
+                {
+                    option.Filters.Add<GlobalExceptionFilter>();
+                    option.Filters.Add<GlobalControllerFormatFilter>();
+                }
+            ).AddControllersAsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,8 +48,10 @@ namespace Dyson.Core.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseMyRequestDurationMiddleware();
+
+            app.UseMyExceptionMiddleware();
 
             app.UseHttpsRedirection();
 

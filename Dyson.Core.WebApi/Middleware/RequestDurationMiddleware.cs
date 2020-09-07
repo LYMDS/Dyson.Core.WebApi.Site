@@ -35,9 +35,9 @@ namespace Dyson.Core.WebApi.Middleware
             _startTime = DateTime.Now;
             
             await _next(context);
+
             double LongTimeRequest_Max = this.Configuration.GetSection("Logging:LongTimeRequest").Get<double>();
             double RequestTime = (DateTime.Now - _startTime).TotalMilliseconds;
-
             StringBuilder messageBuilder = new StringBuilder();
             messageBuilder.Append(context.Request.Method);
             messageBuilder.Append(" ");

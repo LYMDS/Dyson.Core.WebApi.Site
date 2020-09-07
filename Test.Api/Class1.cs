@@ -61,6 +61,7 @@ namespace Test.Api
         public string Test2()
         {
             MyService.SetServiceString("非注入的控制器能用");
+            throw new Exception("测试全局异常处理器");
             return MyService.GetServiceString();
         }
     }
