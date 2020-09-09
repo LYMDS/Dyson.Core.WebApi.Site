@@ -15,9 +15,4 @@
     <PackageReference Include="sqlSugarCore" Version="5.0.0.15" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Dyson.Core.Autofac.Test\Dyson.Core.Autofac.Test.csproj" />
-    <ProjectReference Include="..\Test.Api\Test.Api.csproj" />
-  </ItemGroup>
-
 </Project>
