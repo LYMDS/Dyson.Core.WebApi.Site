@@ -21,12 +21,10 @@ namespace Dyson.Core.WebApi.Common
         /// </summary>
         public DysonCommandBase() 
         {
-            // 日志操作器初始化为空
+            // 日志操作器初始化
             this.LogManager = null;
             // 读取配置接口初始化
-            IConfigurationBuilder builder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory).AddXmlFile("db.config.json");
-            this.Config = builder.Build();
+            this.Config = null;
         }
 
         // 读取配置接口
@@ -34,7 +32,7 @@ namespace Dyson.Core.WebApi.Common
         // 日志操作器
         protected ILogger LogManager { set; get; }
         // 数据库操作器
-        public SqlSugarClient db 
+        public SqlSugarClient DB 
         { 
             get 
             { 
@@ -44,6 +42,7 @@ namespace Dyson.Core.WebApi.Common
 
         private SqlSugarClient InitDB() 
         {
+            if (Config == null) throw new Exception("配置为空");
             string connStr = Config.GetSection("connstr").Value;
             string Key = Config.GetSection("privatekey").Value;
             RSAHelper RSA_Helper = new RSAHelper();
@@ -53,7 +52,7 @@ namespace Dyson.Core.WebApi.Common
                 new ConnectionConfig()
                 {
                     ConnectionString = connStr,
-                    DbType = DbType.SqlServer, // 设置数据库类型
+                    DbType = DbType.Sqlite, // 设置数据库类型
                     IsAutoCloseConnection = true, // 自动释放数据务，如果存在事务，在事务结束后释放
                     InitKeyType = InitKeyType.Attribute // 从实体特性中读取主键自增列信息
                 });

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using System;
@@ -26,8 +26,15 @@ namespace Dyson.Core.WebApi.Filter
         public void OnResultExecuting(ResultExecutingContext context)
         {
             var objectResult = context.Result as ObjectResult;
-            Logger.LogWarning(objectResult.StatusCode.ToString());
-            context.Result = new OkObjectResult(new BaseResultModel(code: 200, data: objectResult.Value));
+            if (objectResult != null)
+            {
+                Logger.LogWarning(objectResult.StatusCode.ToString());
+                context.Result = new OkObjectResult(new BaseResultModel(code: 200, data: objectResult.Value));
+            }
+            else
+            {
+                context.Result = new OkObjectResult(new BaseResultModel(code: 200, message: "Void Function", data: objectResult));
+            }
         }
     }
 }

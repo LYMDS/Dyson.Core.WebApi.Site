@@ -11,9 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dyson.Core.Autofac.Test\Dyson.Core.Autofac.Test.csproj" />
-    <ProjectReference Include="..\Dyson.Core.DataBase.ORM\Dyson.Core.DataBase.ORM.csproj" />
     <ProjectReference Include="..\Dyson.Core.WebApi.Common\Dyson.Core.WebApi.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="db.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

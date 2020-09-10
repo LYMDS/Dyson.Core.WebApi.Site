@@ -20,6 +20,11 @@ namespace Dyson.Core.WebApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                // 数据库配置文件
+                .ConfigureAppConfiguration(context =>
+                {
+                    context.AddJsonFile("db.config.json", optional: true, reloadOnChange: true);
+                })
                 // 配置日志
                 .ConfigureLogging(logging =>
                 {
