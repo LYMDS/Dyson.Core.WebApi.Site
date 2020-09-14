@@ -6,6 +6,8 @@ using System.Reflection;
 using System.IO;
 using Autofac.Core;
 using Microsoft.Extensions.Configuration;
+using Dyson.Core.DataBase.Entity.Entitys;
+using Dyson.Core.Test.Main.SqlSugarTools;
 
 /// <summary>
 /// 用来方便测试的控制台应用程序
@@ -18,7 +20,8 @@ namespace Dyson.Core.Test.Main
 
         static void Main(string[] args)
         {
-            test3();
+            CreateTableTest();
+            //test3();
             //test4_init();
             //test4();
             // test5();
@@ -50,10 +53,9 @@ namespace Dyson.Core.Test.Main
         {
             RSAHelper RSA_Helper = new RSAHelper();
             string Key = "<RSAKeyValue><Modulus>71BFPveDqKvANe/T9/Zh5F/5vQ+3klVrurJGE103XEDVNn0OaL5FjmoRfCil2kzvfieRaWSjppXm8+qtZE6Mo3g8qkKFMqXV/mcKJhaf0V+o5AgXHcIm+G1tbvVJSA+1iQEgdwprPKcqwxQiZFDgZIMwocmB/E5Krp9RiQLfdjU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>";
-            string resEncrypt = RSA_Helper.Encrypt("Data Source=Test.db;Version=3;", Key);
+            string resEncrypt = RSA_Helper.Encrypt("Data Source=Test.db;", Key);
             Console.WriteLine("加密后");
             Console.WriteLine(resEncrypt);
-
         }
 
         ///// <summary>
@@ -90,6 +92,12 @@ namespace Dyson.Core.Test.Main
             Console.WriteLine(CFH.GetConfigPath());
             Console.WriteLine(CFH.ReadConfig("connstr"));
             Console.WriteLine(CFH.ReadConfig("publickey"));
+        }
+
+        public static void CreateTableTest() 
+        {
+            CreateDbTable cmd = new CreateDbTable();
+            cmd.CreateTableByClass<ThemeBase>();
         }
     }
 }

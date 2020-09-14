@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dyson.Core.Command.TestUnit\Dyson.Core.Command.TestUnit.csproj" />
+    <ProjectReference Include="..\Dyson.Core.DataBase.Entity\Dyson.Core.DataBase.Entity.csproj" />
+    <ProjectReference Include="..\Dyson.Core.WebApi.Common\Dyson.Core.WebApi.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
+      <HintPath>..\..\..\..\Nuget\Package\microsoft.aspnetcore.mvc.core\2.2.5\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.e_sqlite3">
+      <HintPath>..\bin\netcoreapp3.1\SQLitePCLRaw.provider.e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlSugar">
+      <HintPath>..\bin\netcoreapp3.1\SqlSugar.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

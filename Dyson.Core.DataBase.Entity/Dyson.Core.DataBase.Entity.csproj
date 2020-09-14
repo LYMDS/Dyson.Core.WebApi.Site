@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -9,7 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entitys\" />
+    <Reference Include="SqlSugar">
+      <HintPath>..\..\..\..\Nuget\Package\sqlsugarcore\5.0.0.15\lib\netstandard2.0\SqlSugar.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

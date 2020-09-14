@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dyson.Core.Test.Main", "Dys
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dyson.Core.DataBase.Entity", "Dyson.Core.DataBase.Entity\Dyson.Core.DataBase.Entity.csproj", "{2C1B63F1-7548-4AC3-BA86-601D6C471572}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyson.Core.Controller.TestUnit", "Dyson.Core.Controller.TestUnit\Dyson.Core.Controller.TestUnit.csproj", "{B337CCCA-5D4D-4075-8BA7-9C36BCE0FB99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dyson.Core.Command.TestUnit", "Dyson.Core.Command.TestUnit\Dyson.Core.Command.TestUnit.csproj", "{CC796C2A-EE0D-4F8D-A354-FCA27432B7B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C1B63F1-7548-4AC3-BA86-601D6C471572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B337CCCA-5D4D-4075-8BA7-9C36BCE0FB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B337CCCA-5D4D-4075-8BA7-9C36BCE0FB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B337CCCA-5D4D-4075-8BA7-9C36BCE0FB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B337CCCA-5D4D-4075-8BA7-9C36BCE0FB99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC796C2A-EE0D-4F8D-A354-FCA27432B7B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC796C2A-EE0D-4F8D-A354-FCA27432B7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC796C2A-EE0D-4F8D-A354-FCA27432B7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC796C2A-EE0D-4F8D-A354-FCA27432B7B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

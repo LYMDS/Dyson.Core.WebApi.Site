@@ -24,7 +24,6 @@ namespace Dyson.Core.WebApi.ToolHelpers
 
         public ContainerBuilder builder;
 
-        
         public void AddAssemblyFromDllToMvcBuilder(IMvcBuilder mvcBuilder, string dllName)
         {
             Assembly otherWebAPIAssembly = null;
@@ -57,18 +56,32 @@ namespace Dyson.Core.WebApi.ToolHelpers
         }
 
         /// <summary>
-        /// 自动注入程序集IOC容器
+        /// 废弃方法
         /// </summary>
         /// <param name="dllName">程序集名称</param>
-        public void AddAssemblyFromDllToAutoFac(string dllName) 
+        public void discard(string dllName) 
         {
             var assemblies = AssemblyLoadContext.Default.Assemblies;
+            
             if (!assemblies.Any(o => o.FullName.Contains(Path.GetFileNameWithoutExtension(dllName))))
             {
                 var dllFile = AppContext.BaseDirectory + dllName;
                 Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(dllFile);
-                var res = builder.RegisterAssemblyTypes(assembly).PublicOnly().AsImplementedInterfaces();
+                var res = builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().AsSelf();
             }
+        }
+
+
+        /// <summary>
+        /// 自动注入程序集IOC容器
+        /// </summary>
+        /// <param name="dllName">程序集名称</param>
+        public void AddAssemblyFromDllToAutoFac(string dllName)
+        {
+            var dllFile = AppContext.BaseDirectory + dllName;
+            Assembly assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(dllFile);
+            // 将程序集注入AutoFac容器,以接口暴露或者本体类
+            builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().AsSelf();
         }
 
         /// <summary>
@@ -81,7 +94,7 @@ namespace Dyson.Core.WebApi.ToolHelpers
             {
                 foreach (string i in AssemblyList) 
                 {
-                    this.AddAssemblyFromDllToAutoFac(i);
+                    AddAssemblyFromDllToAutoFac(i);
                 }
             }
         }

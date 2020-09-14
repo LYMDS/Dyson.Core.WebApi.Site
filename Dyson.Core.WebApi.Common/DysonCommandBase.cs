@@ -19,12 +19,12 @@ namespace Dyson.Core.WebApi.Common
         /// <summary>
         /// 初始化函数
         /// </summary>
-        public DysonCommandBase() 
+        public DysonCommandBase(ILogger<DysonCommandBase> logger, IConfiguration config) 
         {
             // 日志操作器初始化
-            this.LogManager = null;
+            this.LogManager = logger;
             // 读取配置接口初始化
-            this.Config = null;
+            this.Config = config;   
         }
 
         // 读取配置接口
